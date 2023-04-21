@@ -1,0 +1,510 @@
+@charset "UTF-8";
+
+h1.cat{
+	font-family: 'Notable', sans-serif;
+	text-align:center;
+	font-size:40px;
+}
+
+#footer{
+  position: relative;
+  z-index: 2;
+}
+small{
+  background:#444;
+  color:#fff;
+  display: block;
+  text-align: center;
+  padding:10px;
+}
+
+/*HOME*/
+.myName{
+	font-family: 'Poiret One', cursive;
+	text-align:center;
+	font-size:100px;
+	color:#fff;
+	margin-top:80px;
+	margin-bottom:150px;
+}
+/*=== 9-1-2 丸が動いてスクロールを促す ====*/
+/*スクロールダウン全体の場所*/
+.scrolldown2{
+    /*描画位置※位置は適宜調整してください*/
+	position:relative;top:-50px;
+	bottom:10px;
+	left:50%;
+}
+/*Scrollテキストの描写*/
+.scrolldown2 span{
+    /*描画位置*/
+	position: absolute;
+	left:10px;
+	bottom:10px;
+    /*テキストの形状*/
+	color: #fff;
+	font-size: 0.7rem;
+	letter-spacing: 0.05em;
+	/*縦書き設定*/
+	-ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+/* 丸の描写 */
+.scrolldown2:before {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom:0;
+    left:-4px;
+    /*丸の形状*/
+	width:10px;
+	height:10px;
+	border-radius: 50%;
+	background:#fff;
+    /*丸の動き1.6秒かけて透過し、永遠にループ*/
+	animation:
+		circlemove 1.6s ease-in-out infinite,
+		cirlemovehide 1.6s ease-out infinite;
+}
+/*下からの距離が変化して丸の全体が上から下に動く*/
+@keyframes circlemove{
+      0%{bottom:45px;}
+     100%{bottom:-5px;}
+ }
+/*上から下にかけて丸が透過→不透明→透過する*/
+@keyframes cirlemovehide{
+      0%{opacity:0}
+     50%{opacity:1;}
+    80%{opacity:0.9;}
+	100%{opacity:0;}
+ }
+/* 線の描写 */
+.scrolldown2:after{
+	content:"";
+    /*描画位置*/
+	position: absolute;
+	bottom:0;
+	left:0;
+    /*線の形状*/
+	width:2px;
+	height: 50px;
+	background:#fff;
+}
+
+.box1{
+	animation-name:fadeUpAnime;
+	animation-duration:0.5s;
+	animation-fill-mode:forwards;
+	opacity:0;
+	}
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+	transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+	transform: translateY(0);
+  }
+}
+.indexBody{
+	background-color:#cee0ca;
+	margin:0;
+	height:100%;
+	overflow-x:hidden;
+}
+h1.cat2{
+	font-family: 'Notable', sans-serif;
+	font-size:40px;
+	margin-top:0;
+}
+.circle{
+	position:relative;
+	width:400px;
+	height:400px;
+	background:#fff;
+	border-radius:50%;
+	border:solid 3px #444;
+	font-family: 'Kaisei Decol', serif;
+	margin:0 auto;
+	text-align:center;
+	margin-top:30px;
+	margin-bottom:30px;
+}
+.about{
+	position:absolute;
+	top:22%;
+	left:26%;
+}
+.indexList{
+	font-family: 'Notable', sans-serif;
+	font-size:40px;
+	list-style:none;
+	text-align:center;
+	padding:0;
+	margin-top:40px;
+	margin-bottom:70px;
+}
+.indexList li{
+	margin-bottom:30px;
+}
+.indexList a{
+	text-decoration:none;
+	color:#000;
+}
+.indexList a:hover{
+	color:#fff;
+	text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
+}
+
+/*ドロワーメニュー*/
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.3);
+  z-index: 190;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in;
+}
+/*ドロワー設置*/
+nav.drawer {
+	width: 270px;
+	height: 100vh;
+	background-color: #FFF;
+	right: -270px;
+	top: 0;
+	position: fixed;
+	padding: 0px 0;
+	transition: all 200ms ease-in-out;
+	z-index: 199;
+}
+/*索引の装飾*/
+nav.drawer ul {
+    border: none;
+    padding: 0;
+}
+/*ボタン設置*/
+.toggle {
+  position: relative;
+  top:1%;
+  right: 22%;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  background-color:#fff;
+  border-radius: 5px;
+}
+/*ボタン*/
+span.toggler,
+span.toggler:before,
+span.toggler:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #444;
+    position: absolute;
+    pointer-events: none;
+}
+/*三本線の一番上*/
+span.toggler:before{
+    bottom: 9px;
+}
+/*三本線の一番下*/
+span.toggler:after {
+    top: 9px;
+}
+/*三本線真ん中開いたときに消す*/
+span.deleteclass {
+    background-color: transparent;
+}
+/*三本線一番上開いたときに45度傾ける*/
+span.deleteclass::before {
+    bottom: 0;
+    transform: rotate(45deg);
+}
+/*三本線一番下開いたときに-45度傾ける*/
+span.deleteclass::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+/*"MENU"の配置*/
+.menu{
+  text-align: center;
+  margin-bottom: 30px;
+}
+/*"MENU"の装飾*/
+.menu p{
+  text-decoration: none;
+  font-size: 3rem;
+  cursor:default;
+  margin-top:0;
+  font-family: 'Notable', sans-serif;
+  color: #fff;
+  text-shadow: 1px 0 0 #444, 0 1px 0 #444, -1px 0 0 #444, 0 -1px 0 #444;
+}
+/*索引の箇条書きマーク*/
+.drawer ul li {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/*索引の装飾*/
+.drawer ul li a {
+  padding: 15px 30px;
+  display: block;
+  color: #444;
+  font-size: 25px;
+  text-decoration: none;
+  transition: all 200ms ease;
+  font-family: 'Notable', sans-serif;
+}
+/*索引にカーソルを合わせた時の背景色*/
+.drawer ul li a:hover {
+  background-color: #f1f1f1;
+}
+/*開いたときに左から出てくる*/
+.show-nav .drawer{
+  right: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,.6);
+}
+/*開いたときに後ろを暗くする*/
+.show-nav .overlay{
+  opacity: 1;
+  visibility: visible;
+}
+
+/*HISTORY*/
+.cat{
+	margin-top:30px;
+	margin-bottom:30px;
+}
+.historyBody{
+	background-color:#cee0ca;
+	margin:0;
+}
+.historyBox{
+	padding-top:15px;
+	padding-bottom:34px;
+}
+.timeline {
+  list-style: none;
+  font-family: 'Kaisei Decol', serif;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  background:#fff;
+  border:solid 3px #444;
+  border-radius:10px;
+  width:550px;
+}
+
+/*デスクトップ表示*/
+@media ( min-width : 640px ){
+  .timeline{
+	padding-left:80px;
+	padding-top:50px; 
+	padding-bottom:50px;
+	margin-top:0;
+  }
+  .timeline  li {
+    overflow: hidden;
+    margin: 0;
+    position: relative;
+  }
+  .timelist{
+	  margin:0;
+  }
+  .timeline-date {
+    width: 95px;
+    float:left;
+    margin-top: 22px;
+  }
+  .timeline-content {
+    width: 360px;
+    float:left;
+    border-left: 3px #e5e5d1 solid;
+    padding-left: 30px;
+  }
+  /*年表縦の線と丸*/
+  .timeline-content:before {
+	content: '';
+    width: 12px;
+    height: 12px;
+    background: #444;
+    position: absolute;
+    left: 90px;
+    top: 28px;
+    border-radius: 100%;
+  }
+}
+
+/*HOBBY*/
+.hobbyBody{
+	background-color:#cee0ca;
+	margin:0;
+}
+h1.favcat{
+	font-family: 'Notable', sans-serif;
+}
+h2.fav{
+	font-family: 'Kaisei Decol', serif;
+}
+.favAll{
+	width:585px;
+	margin: 0 auto;
+	padding-top:15px;
+}
+.favAll img {
+    border-radius: 10px;
+}
+.favAll div{
+	margin-bottom:50px;
+	background:#fff;
+	border:solid 3px #444;
+	border-radius:10px;
+	padding-left:40px;
+	padding-bottom:30px;
+}
+.charaK{
+	color:#B22D35;
+}
+/*リンクアイコン*/
+.linkbtn{
+display:inline-block;
+font-size:35px;
+text-decoration:none;
+transition:.5s;
+color:#444;
+width:40px;
+text-align:center;
+margin-bottom:10px;
+}
+/*リストの黒点消す*/
+ul.btn{
+  list-style: none;
+}
+/* インスタだけ少し大きく */
+.linkbtn .fa-instagram{
+font-size:38px;
+}
+/*SKZ公式サイトマウスホバー時*/
+.linkbtn .fa-music:hover{
+	color:#00ff00;
+}
+/*Twitterマウスホバー時*/
+.linkbtn .fa-twitter:hover{
+	color:#2bc4ff;
+}
+/*Instagramマウスホバー時*/
+.linkbtn .fa-instagram:hover{
+	color:#cf2e92;/*2#F26939*/
+}
+/*YouTubeマウスホバー時*/
+.linkbtn .fa-youtube:hover{
+	color:#fc0d1c;
+}
+/*映画HPマウスホバー時*/
+.linkbtn .fa-film:hover{
+	color:#C38559;
+}
+/*公式HPマウスホバー時*/
+.linkbtn .fa-gamepad:hover{
+	color:#3480B7;/*#00e6bf*/
+}
+
+/*ふわっ*/
+/* fadeUp */
+.fadeUp{
+animation-name:fadeUpAnime;
+animation-duration:0.5s;
+animation-fill-mode:forwards;
+opacity:0;
+}
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+  transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+  transform: translateY(0);
+  }
+}
+/* スクロールをしたら出現する要素にはじめに透過0を指定　*/
+.fadeUpTrigger{
+    opacity: 0;
+}
+
+/*アコーディオンパネル*/
+.accordion-002 {
+    max-width: 500px;
+    margin-bottom: 7px;
+    border: 3px solid #cee0ca;
+    border-radius: 5px;
+}
+
+.accordion-002 summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 1em 2em;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2028%2028%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2214%22%20cy%3D%2214%22%20r%3D%2214%22%20style%3D%22fill%3A%23cee0ca%3B%22%2F%3E%0A%3C%2Fsvg%3E');
+    background-position: right calc(2em - 7px) center;
+    background-size: 22px;
+    background-repeat: no-repeat;
+    color: #cee0ca;
+    font-weight: 600;
+    cursor: pointer;
+    font-size:20px;
+}
+
+.accordion-002 summary::-webkit-details-marker {
+    display: none;
+}
+
+.accordion-002 summary::after {
+    transform: translateY(-25%) rotate(45deg);
+    width: 5px;
+    height: 5px;
+    border-bottom: 3px solid #fff;
+    border-right: 3px solid #fff;
+    content: '';
+    transition: transform .3s;
+}
+
+.accordion-002[open] summary::after {
+    transform: rotate(225deg);
+}
+
+.accordion-002 p {
+    transform: translateY(-10px);
+    opacity: 0;
+    margin: 0;
+    padding: 0 3em 2em;
+    color: #444;
+    transition: transform .5s, opacity .5s;
+    font-family: 'Kaisei Decol', serif;
+}
+
+.accordion-002[open] p {
+    transform: none;
+    opacity: 1;
+}
+.attention{
+	color:#c0c0c0;
+	font-size:12px;
+}
